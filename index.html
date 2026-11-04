@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Środki Stylistyczne – Pro Trening</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Środki Stylistyczne</h1>
+        <p>Zaawansowana platforma do nauki, fiszek i testów</p>
+        <nav class="mode-nav">
+            <button class="nav-btn active" data-tab="learn">Baza wiedzy</button>
+            <button class="nav-btn" data-tab="flashcards">Fiszki</button>
+            <button class="nav-btn" data-tab="quiz">Test wielokrotny</button>
+            <button class="nav-btn" data-tab="matching">Dopasuj pary</button>
+            <button class="nav-btn" data-tab="typing">Wpisz nazwę</button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- 1. BAZA WIEDZY -->
+        <section id="learn-section" class="tab-content active">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Szukaj środka stylistycznego lub definicji...">
+            </div>
+            <div id="cards-container" class="cards-grid"></div>
+        </section>
+
+        <!-- 2. FISZKI -->
+        <section id="flashcards-section" class="tab-content">
+            <div class="flashcard-container">
+                <div class="flashcard-progress">Fiszka <span id="fc-current">1</span> / <span id="fc-total">17</span></div>
+                <div id="flashcard" class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span class="fc-hint">Kliknij lub naciśnij spację, aby obrócić</span>
+                            <h2 id="fc-front-title">Nazwa</h2>
+                        </div>
+                        <div class="flashcard-back">
+                            <p id="fc-back-def" class="fc-def"></p>
+                            <div class="fc-example-box">
+                                <strong>Przykład:</strong>
+                                <p id="fc-back-ex"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-controls">
+                    <button id="fc-prev-btn" class="secondary-btn">Poprzednia</button>
+                    <button id="fc-flip-btn" class="primary-btn">Obróć</button>
+                    <button id="fc-next-btn" class="secondary-btn">Następna</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TEST WIELOKROTNY -->
+        <section id="quiz-section" class="tab-content">
+            <div id="quiz-start-box" class="quiz-box">
+                <h2>Test Wiedzy (Quiz)</h2>
+                <p>Sprawdź się w pytaniach wyboru. Otrzymasz 10 losowych pytań.</p>
+                <button id="start-quiz-btn" class="primary-btn">Rozpocznij test</button>
+            </div>
+            <div id="quiz-active-box" class="quiz-box hidden">
+                <div class="quiz-progress">
+                    <span id="question-tracker">Pytanie 1 / 10</span>
+                    <span id="score-tracker">Punkty: 0</span>
+                </div>
+                <div class="question-card">
+                    <p id="question-type" class="question-type-label"></p>
+                    <blockquote id="question-text"></blockquote>
+                </div>
+                <div id="options-container" class="options-grid"></div>
+                <div id="feedback-message" class="feedback-msg hidden"></div>
+                <button id="next-question-btn" class="primary-btn hidden">Następne pytanie</button>
+            </div>
+            <div id="quiz-result-box" class="quiz-box hidden">
+                <h2>Koniec testu!</h2>
+                <p id="final-score-text"></p>
+                <p id="final-message"></p>
+                <button id="restart-quiz-btn" class="primary-btn">Spróbuj ponownie</button>
+            </div>
+        </section>
+
+        <!-- 4. DOPASUJ PARY -->
+        <section id="matching-section" class="tab-content">
+            <div class="matching-wrapper">
+                <h2>Dopasuj przykłady do środków</h2>
+                <p class="subtitle">Wybierz najpierw środek, a potem odpowiadający mu przykład.</p>
+                <div class="matching-game-container">
+                    <div class="matching-column" id="matching-terms"></div>
+                    <div class="matching-column" id="matching-examples"></div>
+                </div>
+                <div class="matching-actions">
+                    <button id="reset-matching-btn" class="secondary-btn">Resetuj układ</button>
+                    <span id="matching-score">Dopasowano: 0 / 5</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. WPISZ NAZWĘ -->
+        <section id="typing-section" class="tab-content">
+            <div class="quiz-box">
+                <h2>Wyzwanie: Wpisz nazwę</h2>
+                <p>Przeczytaj przykład i wpisz poprawną nazwę środka stylistycznego.</p>
+                <div class="question-card">
+                    <blockquote id="typing-prompt"></blockquote>
+                </div>
+                <div class="typing-form">
+                    <input type="text" id="typing-input" placeholder="Wpisz nazwę środka (np. Epitet)..." autocomplete="off">
+                    <button id="typing-submit-btn" class="primary-btn">Sprawdź</button>
+                </div>
+                <div id="typing-feedback" class="feedback-msg hidden"></div>
+                <button id="typing-next-btn" class="primary-btn hidden" style="margin-top: 15px;">Następny przykład</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
